@@ -3,9 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"syscall/js"
 	"github.com/sanity-io/go-groq/parser"
 	"github.com/sanity-io/go-groq/print"
+	"syscall/js"
 )
 
 func main() {
@@ -15,17 +15,17 @@ func main() {
 
 func jsFormat() js.Func {
 	return js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		formatted, error := format(args[0].String());
+		formatted, error := format(args[0].String())
 
-		if (error != nil) {
-			return map[string]interface{} {
-                "error": error.Error(),
-            }
+		if error != nil {
+			return map[string]interface{}{
+				"error": error.Error(),
+			}
 		}
-		
-		return map[string]interface{} {
+
+		return map[string]interface{}{
 			"result": formatted,
-    	}
+		}
 	})
 }
 
