@@ -1,6 +1,6 @@
 import './wasm-exec.js'
 
-type GroqFmtResult =
+type GroqfmtResult =
   | {
       error: string
       result: undefined
@@ -10,7 +10,7 @@ type GroqFmtResult =
       result: string
     }
 
-declare const groqfmt: (query: string) => GroqFmtResult
+declare const groqfmt: (query: string) => GroqfmtResult
 
 declare const Go: {
   new (): {
