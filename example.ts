@@ -15,6 +15,7 @@ declare const groqfmt: (query: string) => GroqFmtResult
 declare const Go: {
   new (): {
     run: (instance: WebAssembly.Instance) => Promise<void>
+    importObject: WebAssembly.Imports
   }
 }
 
