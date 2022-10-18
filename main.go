@@ -2,9 +2,9 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"github.com/sanity-io/go-groq/parser"
 	"github.com/sanity-io/go-groq/print"
+	"regexp"
 	"syscall/js"
 )
 
@@ -19,7 +19,7 @@ func jsFormat() js.Func {
 
 		if error != nil {
 			return map[string]interface{}{
-				"error": error.Error(),
+				"error": parseError(error.Error()),
 			}
 		}
 
@@ -29,17 +29,32 @@ func jsFormat() js.Func {
 	})
 }
 
+func parseError(error string) map[string]interface{} {
+	regex := regexp.MustCompile(`parse error at positions (?P<begin>[0-9]+)\.\.(?P<end>[0-9]+): (?P<message>.*)`)
+	match := regex.FindStringSubmatch(error)
+
+	subMatchMap := make(map[string]interface{})
+
+	for index, name := range regex.SubexpNames() {
+		if index != 0 {
+			subMatchMap[name] = match[index]
+		}
+	}
+
+	return subMatchMap
+}
+
 func format(query string) (string, error) {
 	q, err := parser.Parse(query, parser.WithParamNodes())
 
 	if err != nil {
-		return "", fmt.Errorf("parsing query: %w", err)
+		return "", err
 	}
 
 	var buf bytes.Buffer
 
 	if err := print.PrettyPrint(q, &buf); err != nil {
-		return "", fmt.Errorf("formatting query: %w", err)
+		return "", err
 	}
 
 	if _, err := buf.Write([]byte("\n")); err != nil {
