@@ -5,6 +5,7 @@ import (
 	"github.com/sanity-io/go-groq/parser"
 	"github.com/sanity-io/go-groq/print"
 	"regexp"
+	"strconv"
 	"syscall/js"
 )
 
@@ -37,6 +38,11 @@ func parseError(error string) map[string]interface{} {
 	for index, name := range regex.SubexpNames() {
 		if index != 0 && match[index] != "" {
 			subMatchMap[name] = match[index]
+
+			if name == "begin" || name == "end" {
+				valueInt, _ := strconv.Atoi(match[index])
+				subMatchMap[name] = valueInt
+			}
 		}
 	}
 
