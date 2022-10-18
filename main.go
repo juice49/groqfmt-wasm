@@ -30,13 +30,12 @@ func jsFormat() js.Func {
 }
 
 func parseError(error string) map[string]interface{} {
-	regex := regexp.MustCompile(`parse error at positions (?P<begin>[0-9]+)\.\.(?P<end>[0-9]+): (?P<message>.*)`)
+	regex := regexp.MustCompile(`parse error at positions? (?P<begin>[0-9]+)(?:\.\.)?(?P<end>[0-9]+)?: (?P<message>.*)`)
 	match := regex.FindStringSubmatch(error)
-
 	subMatchMap := make(map[string]interface{})
 
 	for index, name := range regex.SubexpNames() {
-		if index != 0 {
+		if index != 0 && match[index] != "" {
 			subMatchMap[name] = match[index]
 		}
 	}
