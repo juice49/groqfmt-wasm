@@ -1,6 +1,12 @@
+interface GroqfmtError {
+  begin: number
+  end?: number
+  message: string
+}
+
 type GroqfmtResult =
   | {
-      error: string
+      error: GroqfmtError
       result: undefined
     }
   | {
