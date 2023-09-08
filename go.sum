@@ -11,6 +11,8 @@ github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0/go.mod h1:iKH77
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sanity-io/go-groq v0.0.0-20221006065344-44f552cff2f9 h1:yKsI8YAI+BXqVRuApg+pNR+VoscFlU72NXhJMqpoMy4=
 github.com/sanity-io/go-groq v0.0.0-20221006065344-44f552cff2f9/go.mod h1:YND+iP0pw68P3TnDiqEmnTWfmyUdCrxdgiiz5EJiaTk=
+github.com/sanity-io/go-groq v0.0.0-20230412094530-7a5646fefb27 h1:AD8G80nc4cINyFScsJHSRlI7e9TS9cr6Ij9nn9FI3v4=
+github.com/sanity-io/go-groq v0.0.0-20230412094530-7a5646fefb27/go.mod h1:YND+iP0pw68P3TnDiqEmnTWfmyUdCrxdgiiz5EJiaTk=
 github.com/sanity-io/litter v1.5.1/go.mod h1:5Z71SvaYy5kcGtyglXOC9rrUi3c1E8CamFWjQsazTh0=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v0.0.0-20161117074351-18a02ba4a312/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
