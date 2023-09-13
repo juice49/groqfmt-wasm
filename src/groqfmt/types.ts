@@ -1,10 +1,12 @@
-interface GroqfmtError {
+/** @public */
+export interface GroqfmtError {
   begin: number
   end?: number
   message: string
 }
 
-type GroqfmtResult =
+/** @public */
+export type GroqfmtResult =
   | {
       error: GroqfmtError
       result: undefined
@@ -14,9 +16,11 @@ type GroqfmtResult =
       result: string
     }
 
-declare const groqfmt: (query: string) => GroqfmtResult
+/** @public */
+export type Groqfmt = (query: string) => GroqfmtResult
 
-declare const Go: {
+/**@public */
+export interface Go {
   new (): {
     run: (instance: WebAssembly.Instance) => Promise<void>
     importObject: WebAssembly.Imports
