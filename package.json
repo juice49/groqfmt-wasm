@@ -1,0 +1,32 @@
+{
+  "name": "@groqfmt/wasm",
+  "author": "Ash",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": "github:juice49/groqfmt-wasm",
+  "keywords": [
+    "groq",
+    "sanity",
+    "format",
+    "wasm",
+    "webassembly"
+  ],
+  "files": [
+    "dist"
+  ],
+  "types": "./dist/types.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "source": "./src/bridge/index.ts",
+  "scripts": {
+    "groqfmt:build": "cd ./src/groqfmt && make",
+    "bridge:build": "pkg build --strict && pkg check --strict && cp ./src/groqfmt/wasm-exec.js ./dist",
+    "build": "bun run groqfmt:build && bun run bridge:build"
+  },
+  "devDependencies": {
+    "@sanity/pkg-utils": "^2.4.8",
+    "bun-types": "latest",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.0"
+  }
+}
