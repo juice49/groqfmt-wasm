@@ -13,6 +13,23 @@ const wasmInstance = new WebAssembly.Instance(wasmModule, go.importObject)
 go.run(wasmInstance)
 
 describe('format URL', () => {
+  it('provides the correct input mode', () => {
+    expect(
+      format({
+        input: '*',
+        groqfmt,
+      }).inputMode,
+    ).toBe('groq')
+
+    expect(
+      format({
+        input:
+          'https://x.apicdn.sanity.io/vX/data/query/y?query=*&perspective=previewDrafts',
+        groqfmt,
+      }).inputMode,
+    ).toBe('url')
+  })
+
   // TODO
   it('extracts query from the URL', () => {})
 
