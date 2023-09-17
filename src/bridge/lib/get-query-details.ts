@@ -1,3 +1,4 @@
+/** @public */
 export interface Details {
   projectId: string
   dataset: string
